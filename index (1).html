@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Балабанова Ганна — Кіберзагрози в Індонезії</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e8edf2;
+    --card: #ffffff;
+    --dark: #1a1f2e;
+    --accent: #1a1f2e;
+    --accent2: #4f7cff;
+    --text: #2d3748;
+    --muted: #6b7a99;
+    --border: #d4dce8;
+    --radius: 18px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(232,237,242,0.92);
+    backdrop-filter: blur(12px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700; font-size: 18px;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .nav-logo-box {
+    width: 36px; height: 36px;
+    background: var(--dark);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 12px; font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex; gap: 8px; list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px; font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 30px;
+    transition: all .2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--dark);
+    color: white;
+  }
+
+  /* HAMBURGER */
+  .nav-burger {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer; padding: 6px;
+    border-radius: 10px;
+    transition: background .2s;
+  }
+  .nav-burger:hover { background: var(--border); }
+  .nav-burger span {
+    display: block; height: 2px; width: 100%;
+    background: var(--dark); border-radius: 2px;
+    transition: all .3s;
+  }
+  .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.open span:nth-child(2) { opacity: 0; }
+  .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU OVERLAY */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+    background: rgba(232,237,242,0.97);
+    backdrop-filter: blur(16px);
+    z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--dark); text-decoration: none;
+    padding: 16px 40px; border-radius: 16px;
+    transition: all .2s; cursor: pointer;
+    width: 80%; text-align: center;
+  }
+  .mobile-menu a:hover, .mobile-menu a.active {
+    background: var(--dark); color: white;
+  }
+
+  /* PAGES */
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding-top: 64px;
+  }
+
+  .page.active { display: block; }
+
+  /* ===== PAGE 1: INTRO ===== */
+  .p1-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 40px;
+    min-height: calc(100vh - 64px);
+    align-items: center;
+  }
+
+  .p1-left {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 56px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .p1-left::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: linear-gradient(135deg, #e8f0ff, #c5d8ff);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; }
+
+  .p1-name {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 52px; font-weight: 700;
+    color: var(--dark);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    letter-spacing: -2px;
+  }
+
+  .p1-name span {
+    color: var(--accent2);
+    display: block;
+  }
+
+  .p1-subtitle {
+    font-size: 15px; color: var(--muted);
+    margin-bottom: 36px; line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .info-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 36px;
+  }
+
+  .info-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .info-card-label {
+    font-size: 11px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.8px; margin-bottom: 4px;
+  }
+
+  .info-card-value {
+    font-size: 14px; font-weight: 600; color: var(--dark);
+  }
+
+  .p1-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: white;
+    padding: 16px 32px;
+    border-radius: 50px; border: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: all .2s;
+    text-decoration: none;
+  }
+
+  .p1-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(79,124,255,0.3);
+  }
+
+  .p1-btn svg { transition: transform .2s; }
+  .p1-btn:hover svg { transform: translateX(4px); }
+
+  .p1-right {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+
+  .p1-card-big {
+    background: var(--dark);
+    border-radius: var(--radius);
+    padding: 40px;
+    color: white;
+    position: relative; overflow: hidden;
+    min-height: 240px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+
+  .p1-card-big::before {
+    content: '🇮🇩';
+    position: absolute; top: 30px; right: 30px;
+    font-size: 64px;
+    opacity: 0.25;
+  }
+
+  .p1-card-big-label {
+    font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .p1-card-big-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 24px; font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .p1-card-big-desc {
+    font-size: 14px; color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  .p1-cards-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+
+  .p1-mini-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+
+  .p1-mini-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+
+  .p1-mini-card-title {
+    font-size: 14px; font-weight: 600; color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .p1-mini-card-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.4;
+  }
+
+  /* ===== PAGE 2: RESUME ===== */
+  .p2-container {
+    padding: 40px;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .p2-header {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .p2-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--dark); letter-spacing: -1px;
+  }
+
+  .p2-title span { color: var(--accent2); }
+
+  .download-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: white;
+    padding: 14px 28px; border-radius: 50px;
+    border: none; cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: all .2s;
+  }
+
+  .download-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79,124,255,0.3);
+  }
+
+  .p2-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
+  }
+
+  .p2-sidebar {
+    display: flex; flex-direction: column; gap: 18px;
+  }
+
+  .resume-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .resume-card h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--dark); letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--bg);
+  }
+
+  .contact-item {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 12px; font-size: 14px;
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--bg); display: flex; align-items: center;
+    justify-content: center; font-size: 16px; flex-shrink: 0;
+  }
+
+  .contact-label { font-size: 11px; color: var(--muted); }
+  .contact-value { font-size: 13px; font-weight: 600; color: var(--dark); }
+
+  .skill-tag {
+    display: inline-block;
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13px; font-weight: 500;
+    color: var(--dark);
+    margin: 4px;
+  }
+
+  .lang-item {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .lang-name { font-size: 14px; font-weight: 600; color: var(--dark); }
+
+  .lang-level {
+    font-size: 12px; padding: 4px 12px;
+    background: var(--bg); border-radius: 20px; color: var(--muted);
+    font-weight: 500;
+  }
+
+  .edu-item {
+    margin-bottom: 16px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--bg);
+  }
+
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .edu-year {
+    font-size: 11px; font-weight: 600; color: var(--accent2);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .edu-title {
+    font-size: 14px; font-weight: 600; color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .edu-school { font-size: 12px; color: var(--muted); }
+
+  .exp-item {
+    margin-bottom: 24px; padding-bottom: 24px;
+    border-bottom: 1px solid var(--bg);
+    position: relative; padding-left: 20px;
+  }
+
+  .exp-item:last-child { border-bottom: none; margin-bottom: 0; }
+
+  .exp-item::before {
+    content: '';
+    position: absolute; left: 0; top: 6px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent2);
+  }
+
+  .exp-period {
+    font-size: 11px; font-weight: 600; color: var(--accent2);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .exp-title {
+    font-size: 15px; font-weight: 700; color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .exp-company {
+    font-size: 13px; color: var(--muted); margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .exp-duties {
+    list-style: none; display: flex; flex-direction: column; gap: 5px;
+  }
+
+  .exp-duties li {
+    font-size: 13px; color: var(--text);
+    padding-left: 16px; position: relative; line-height: 1.5;
+  }
+
+  .exp-duties li::before {
+    content: '—';
+    position: absolute; left: 0; color: var(--muted);
+  }
+
+  /* ===== PAGE 3: REPORT ===== */
+  .p3-container {
+    padding: 40px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .p3-hero {
+    background: var(--dark);
+    border-radius: var(--radius);
+    padding: 52px;
+    margin-bottom: 32px;
+    position: relative; overflow: hidden;
+    color: white;
+  }
+
+  .p3-hero::after {
+    content: '🇮🇩';
+    position: absolute; right: 52px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 120px; opacity: 0.08;
+  }
+
+  .p3-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 30px; padding: 6px 16px;
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.7);
+    letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px;
+  }
+
+  .p3-hero h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 36px; font-weight: 700;
+    line-height: 1.15; margin-bottom: 16px;
+    max-width: 560px;
+  }
+
+  .p3-hero p {
+    font-size: 15px; color: rgba(255,255,255,0.6);
+    line-height: 1.6; max-width: 520px;
+  }
+
+  .p3-meta {
+    display: flex; gap: 24px; margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .p3-meta-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: rgba(255,255,255,0.5);
+  }
+
+  .p3-meta-item strong { color: white; }
+
+  .section-heading {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--dark); margin: 36px 0 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-heading span { color: var(--accent2); }
+
+  .threat-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 20px;
+    border-left: 4px solid transparent;
+    transition: all .2s;
+  }
+
+  .threat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+  .threat-card.red { border-left-color: #ef4444; }
+  .threat-card.orange { border-left-color: #f97316; }
+  .threat-card.yellow { border-left-color: #eab308; }
+  .threat-card.blue { border-left-color: #3b82f6; }
+  .threat-card.purple { border-left-color: #8b5cf6; }
+
+  .threat-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .threat-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 36px; font-weight: 700;
+    line-height: 1; color: var(--border);
+    flex-shrink: 0;
+  }
+
+  .threat-meta {}
+
+  .threat-badge {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 6px;
+    margin-bottom: 6px;
+  }
+
+  .badge-red { background: #fef2f2; color: #ef4444; }
+  .badge-orange { background: #fff7ed; color: #f97316; }
+  .badge-yellow { background: #fefce8; color: #ca8a04; }
+  .badge-blue { background: #eff6ff; color: #3b82f6; }
+  .badge-purple { background: #f5f3ff; color: #8b5cf6; }
+
+  .threat-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--dark); margin-bottom: 4px;
+  }
+
+  .threat-body { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+  .incident-box {
+    background: var(--bg);
+    border-radius: 10px; padding: 16px 18px;
+    margin-top: 14px; font-size: 13px;
+  }
+
+  .incident-box strong {
+    display: block; color: var(--dark); margin-bottom: 4px; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700;
+  }
+
+  .incident-box p { color: var(--muted); line-height: 1.5; }
+
+  .standards-row {
+    display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;
+  }
+
+  .std-tag {
+    background: var(--dark); color: white;
+    font-size: 11px; font-weight: 600;
+    padding: 4px 12px; border-radius: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .recs-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    margin-bottom: 40px;
+  }
+
+  .rec-card {
+    background: var(--card);
+    border-radius: 14px; padding: 26px;
+    display: flex; flex-direction: column; gap: 10px;
+    transition: all .2s;
+  }
+
+  .rec-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+
+  .rec-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .rec-num {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .rec-title {
+    font-size: 16px; font-weight: 700; color: var(--dark); line-height: 1.3;
+  }
+
+  .rec-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .rec-std {
+    font-size: 11px; font-weight: 600; color: var(--accent2);
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  .conclusion-box {
+    background: linear-gradient(135deg, var(--dark), #2d3f6e);
+    border-radius: var(--radius); padding: 40px;
+    color: white; text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .conclusion-box h3 {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 20px; font-weight: 700; margin-bottom: 14px;
+  }
+
+  .conclusion-box p {
+    font-size: 14px; color: rgba(255,255,255,0.65);
+    line-height: 1.7; max-width: 600px; margin: 0 auto;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page.active > * {
+    animation: fadeUp .4s ease forwards;
+  }
+
+  /* ===== RESPONSIVE ===== */
+
+  /* Tablet: ≤ 900px */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+
+    .nav-logo { font-size: 15px; }
+    .nav-logo-box { width: 32px; height: 32px; font-size: 11px; }
+
+    /* Page 1 */
+    .p1-hero {
+      grid-template-columns: 1fr;
+      padding: 24px;
+      min-height: unset;
+      gap: 20px;
+    }
+    .p1-left { padding: 36px 28px; }
+    .p1-name { font-size: 38px; letter-spacing: -1px; }
+    .p1-right { display: none; } /* hide right column on tablet, show only on desktop */
+
+    /* Page 2 */
+    .p2-container { padding: 24px; }
+    .p2-header { grid-template-columns: 1fr; gap: 14px; }
+    .p2-title { font-size: 26px; }
+    .p2-grid { grid-template-columns: 1fr; }
+
+    /* Page 3 */
+    .p3-container { padding: 24px; }
+    .p3-hero { padding: 32px; }
+    .p3-hero h1 { font-size: 26px; }
+    .recs-grid { grid-template-columns: 1fr; }
+    .rec-card[style*="grid-column"] { grid-column: unset; }
+  }
+
+  /* Mobile: ≤ 600px */
+  @media (max-width: 600px) {
+    nav { padding: 0 16px; height: 58px; }
+    .page { padding-top: 58px; }
+    .mobile-menu { top: 58px; }
+
+    /* Page 1 */
+    .p1-hero { padding: 16px; gap: 16px; }
+    .p1-left { padding: 28px 20px; }
+    .p1-name { font-size: 30px; letter-spacing: -0.5px; }
+    .p1-subtitle { font-size: 14px; margin-bottom: 24px; }
+    .info-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+    .info-card { padding: 12px 14px; }
+    .info-card-value { font-size: 13px; }
+    .p1-btn { width: 100%; justify-content: center; padding: 14px 24px; font-size: 14px; }
+
+    /* Page 2 */
+    .p2-container { padding: 16px; }
+    .p2-title { font-size: 22px; }
+    .download-btn { width: 100%; justify-content: center; }
+    .resume-card { padding: 20px; }
+    .resume-card h3 { font-size: 12px; }
+    .exp-item { padding-left: 16px; }
+    .exp-title { font-size: 14px; }
+
+    /* Page 3 */
+    .p3-container { padding: 16px; }
+    .p3-hero { padding: 24px 20px; }
+    .p3-hero::after { display: none; }
+    .p3-hero h1 { font-size: 20px; }
+    .p3-hero p { font-size: 13px; }
+    .p3-meta { gap: 12px; }
+    .p3-meta-item { font-size: 12px; }
+    .section-heading { font-size: 18px; margin: 28px 0 16px; }
+    .threat-card { padding: 20px; }
+    .threat-num { font-size: 28px; }
+    .threat-title { font-size: 16px; }
+    .threat-body { font-size: 13px; }
+    .incident-box { padding: 14px; font-size: 12px; }
+    .standards-row { gap: 6px; }
+    .std-tag { font-size: 10px; padding: 3px 9px; }
+    .rec-card { padding: 20px; }
+    .rec-title { font-size: 14px; }
+    .rec-body { font-size: 12px; }
+    .rec-std { font-size: 10px; }
+    .conclusion-box { padding: 28px 20px; }
+    .conclusion-box h3 { font-size: 17px; }
+    .conclusion-box p { font-size: 13px; }
+
+    /* Show right column items stacked on mobile */
+    .p1-right { display: flex; }
+    .p1-cards-row { grid-template-columns: 1fr; }
+    .p1-card-big { min-height: 180px; padding: 28px; }
+    .p1-card-big-title { font-size: 18px; }
+    .p1-mini-card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-box">GB</div>
+    Ганна Балабанова
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage(1)" id="nav1" class="active">Про мене</a></li>
+    <li><a onclick="showPage(2)" id="nav2">Резюме</a></li>
+    <li><a onclick="showPage(3)" id="nav3">Звіт: Індонезія</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="showPage(1)" id="mnav1" class="active">Про мене</a>
+  <a onclick="showPage(2)" id="mnav2">Резюме</a>
+  <a onclick="showPage(3)" id="mnav3">Звіт: Індонезія</a>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <div class="p1-hero">
+    <div class="p1-left">
+      <div class="badge"><span class="badge-dot"></span> Студентка магістратури</div>
+      <div class="p1-name">Ганна<span>Балабанова</span></div>
+      <div class="p1-subtitle">Факультет інформаційних технологій<br>Спеціалізація: Кібербезпека</div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-label">Факультет</div>
+          <div class="info-card-value">Інформаційних технологій</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Група</div>
+          <div class="info-card-value">1-6мз</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Квиток / Країна</div>
+          <div class="info-card-value">🇮🇩 Індонезія</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-label">Освітній ступінь</div>
+          <div class="info-card-value">Магістр кібербезпеки</div>
+        </div>
+      </div>
+
+      <button class="p1-btn" onclick="showPage(3)">
+        Переглянути звіт по Індонезії
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <div class="p1-right">
+      <div class="p1-card-big">
+        <div class="p1-card-big-label">Тема звіту</div>
+        <div class="p1-card-big-title">Кіберзагрози в Індонезії: огляд та рекомендації</div>
+        <div class="p1-card-big-desc">Детальний аналіз 5 основних кіберзагроз та стратегічних рекомендацій з реальними прикладами інцидентів</div>
+      </div>
+
+      <div class="p1-cards-row">
+        <div class="p1-mini-card">
+          <div class="p1-mini-icon" style="background:#fef2f2">🎯</div>
+          <div>
+            <div class="p1-mini-card-title">5 кіберзагроз</div>
+            <div class="p1-mini-card-desc">Детальний огляд основних векторів атак</div>
+          </div>
+        </div>
+        <div class="p1-mini-card">
+          <div class="p1-mini-icon" style="background:#eff6ff">🛡️</div>
+          <div>
+            <div class="p1-mini-card-title">5 рекомендацій</div>
+            <div class="p1-mini-card-desc">Стратегії захисту відповідно до міжнародних стандартів</div>
+          </div>
+        </div>
+        <div class="p1-mini-card">
+          <div class="p1-mini-icon" style="background:#f0fdf4">📋</div>
+          <div>
+            <div class="p1-mini-card-title">Реальні кейси</div>
+            <div class="p1-mini-card-desc">Документовані інциденти в Індонезії</div>
+          </div>
+        </div>
+        <div class="p1-mini-card">
+          <div class="p1-mini-icon" style="background:#faf5ff">🌐</div>
+          <div>
+            <div class="p1-mini-card-title">ISO / NIST</div>
+            <div class="p1-mini-card-desc">Посилання на міжнародні стандарти безпеки</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: RESUME -->
+<div class="page" id="page2">
+  <div class="p2-container">
+    <div class="p2-header">
+      <div>
+        <div class="p2-title">Резюме — <span>Ганна Балабанова</span></div>
+        <div style="color:var(--muted);font-size:14px;margin-top:6px">Провідний аналітик інформаційної безпеки · UKRSIBBANK</div>
+      </div>
+      <a href="resume.docx" download="Балабанова_Ганна_Резюме.docx" class="download-btn">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Завантажити резюме
+      </a>
+    </div>
+
+    <div class="p2-grid">
+      <div class="p2-sidebar">
+        <div class="resume-card">
+          <h3>Контакти</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">Anna.balabanova0703<br>@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">Телефон</div>
+              <div class="contact-value">+380 50 504 5619</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Місто</div>
+              <div class="contact-value">Київ, Україна</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🎂</div>
+            <div>
+              <div class="contact-label">Дата народження</div>
+              <div class="contact-value">07.03.1997</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-card">
+          <h3>Навички</h3>
+          <span class="skill-tag">MS Excel</span>
+          <span class="skill-tag">MS Word</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Аналіз ризиків</span>
+          <span class="skill-tag">Anti-fraud</span>
+          <span class="skill-tag">Моніторинг ІБ</span>
+        </div>
+
+        <div class="resume-card">
+          <h3>Мови</h3>
+          <div class="lang-item">
+            <span class="lang-name">Українська</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">Російська</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">Англійська</span>
+            <span class="lang-level">B1</span>
+          </div>
+        </div>
+
+        <div class="resume-card">
+          <h3>Освіта</h3>
+          <div class="edu-item">
+            <div class="edu-year">Зараз</div>
+            <div class="edu-title">Магістр кібербезпеки</div>
+            <div class="edu-school">Державний університет торгівлі та економіки</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2014 – 2018</div>
+            <div class="edu-title">Бакалавр економічної кібернетики</div>
+            <div class="edu-school">Київський національний університет торгівлі та економіки</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="resume-card">
+          <h3>Досвід роботи</h3>
+
+          <div class="exp-item">
+            <div class="exp-period">Січень 2024 — до сьогодні</div>
+            <div class="exp-title">Провідний аналітик інформаційної безпеки</div>
+            <div class="exp-company">UKRSIBBANK BNP Paribas Group</div>
+            <ul class="exp-duties">
+              <li>Транзакційний аналіз для виявлення аномалій та схем шахрайства</li>
+              <li>Розробка правил та сценаріїв для систем моніторингу</li>
+              <li>Проведення розслідувань інцидентів і підготовка звітів</li>
+              <li>Оптимізація антифрод-процесів відповідно до нормативних вимог</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-period">Червень 2024 — Січень 2026</div>
+            <div class="exp-title">Аналітик інформаційної безпеки</div>
+            <div class="exp-company">UKRSIBBANK BNP Paribas Group</div>
+            <ul class="exp-duties">
+              <li>Залучення індивідуальних клієнтів на Premium ринок</li>
+              <li>Продаж повного спектру банківських продуктів</li>
+              <li>Управління власним портфелем та клієнтськими ризиками</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-period">Січень 2022 — Червень 2024</div>
+            <div class="exp-title">Персональний фінансовий консультант для бізнесу</div>
+            <div class="exp-company">UKRSIBBANK BNP Paribas Group</div>
+            <ul class="exp-duties">
+              <li>Консультування індивідуальних бізнес-клієнтів</li>
+              <li>Фінансовий аналіз та підготовка звітності</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-period">Лютий 2020 — Січень 2022</div>
+            <div class="exp-title">Менеджер з обслуговування корпоративних клієнтів</div>
+            <div class="exp-company">UKRSIBBANK BNP Paribas Group</div>
+            <ul class="exp-duties">
+              <li>Відкриття депозитних рахунків та банківських продуктів</li>
+              <li>Навчання клієнтів цифровим банківським інструментам</li>
+              <li>Обробка транзакцій та запитів на обслуговування рахунків</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-period">Березень 2017 — Жовтень 2019</div>
+            <div class="exp-title">Менеджер з обслуговування корпоративних клієнтів</div>
+            <div class="exp-company">PRIVATBANK</div>
+            <ul class="exp-duties">
+              <li>Пошук нових клієнтів та розширення клієнтської бази</li>
+              <li>Аналіз даних та підготовка звітів</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: REPORT -->
+<div class="page" id="page3">
+  <div class="p3-container">
+    <div class="p3-hero">
+      <div class="p3-tag">🎓 Академічний звіт · Група 1-6мз</div>
+      <h1>Кіберзагрози в Індонезії: 5 ключових ризиків та стратегічний захист</h1>
+      <p>Детальний огляд основних кіберзагроз для Індонезії з реальними прикладами інцидентів та рекомендаціями відповідно до міжнародних стандартів ISO/IEC 27001, NIST CSF та інших.</p>
+      <div class="p3-meta">
+        <div class="p3-meta-item">✍️ <strong>Ганна Балабанова</strong></div>
+        <div class="p3-meta-item">📅 <strong>2025</strong></div>
+        <div class="p3-meta-item">🇮🇩 Країна: <strong>Індонезія</strong></div>
+        <div class="p3-meta-item">📚 Факультет: <strong>ІТ, 1-6мз</strong></div>
+      </div>
+    </div>
+
+    <!-- THREATS -->
+    <div class="section-heading">🔴 Частина I: <span>5 основних кіберзагроз</span></div>
+
+    <div class="threat-card red">
+      <div class="threat-header">
+        <div class="threat-num">01</div>
+        <div class="threat-meta">
+          <span class="threat-badge badge-red">Критична загроза</span>
+          <div class="threat-title">Ransomware-атаки на держсектор</div>
+        </div>
+      </div>
+      <div class="threat-body">
+        Ransomware є однією з найбільш руйнівних загроз для Індонезії. Зловмисники шифрують критичні дані державних установ та лікарень, вимагаючи викуп. Уразливість посилюється застарілою інфраструктурою та низьким рівнем оновлень ПЗ. Індонезія перебуває серед країн Азії з найвищою кількістю ransomware-інцидентів через недостатній захист кінцевих точок та відсутність регулярного резервного копіювання.
+      </div>
+      <div class="incident-box">
+        <strong>📌 Реальний інцидент</strong>
+        <p>У червні 2024 року атака на Pusat Data Nasional (PDN) — Національний центр обробки даних Індонезії — паралізувала понад 200 державних служб. Зловмисники використали ransomware LockBit 3.0, вимагаючи викуп у 8 млн USD. Значна частина даних, у тому числі паспортні бази, виявилась незарезервованою.</p>
+      </div>
+      <div class="standards-row">
+        <span class="std-tag">ISO/IEC 27001:2022 — A.8.13</span>
+        <span class="std-tag">NIST CSF — RC.RP-1</span>
+        <span class="std-tag">BSSN Framework</span>
+      </div>
+    </div>
+
+    <div class="threat-card orange">
+      <div class="threat-header">
+        <div class="threat-num">02</div>
+        <div class="threat-meta">
+          <span class="threat-badge badge-orange">Висока загроза</span>
+          <div class="threat-title">Витоки персональних даних</div>
+        </div>
+      </div>
+      <div class="threat-body">
+        Індонезія зіштовхується з систематичними масштабними витоками персональних даних громадян з баз державних установ та приватного сектору. Причинами є вразливості веб-додатків, SQL-ін'єкції та недостатній контроль доступу. Відсутність до 2024 року повноцінного закону про захист даних (UU PDP) суттєво знизила мотивацію компаній до інвестицій у захист.
+      </div>
+      <div class="incident-box">
+        <strong>📌 Реальний інцидент</strong>
+        <p>2021 рік — витік даних 279 мільйонів громадян з бази Badan Penyelenggara Jaminan Sosial (BPJS) — Агентства соціального страхування. Дані були виставлені на продаж на форумі Raid Forums. Злочинці отримали доступ через незахищений API-ендпоінт.</p>
+      </div>
+      <div class="standards-row">
+        <span class="std-tag">ISO/IEC 27701 — Privacy</span>
+        <span class="std-tag">GDPR — Art. 32</span>
+        <span class="std-tag">UU PDP 2022 (Індонезія)</span>
+      </div>
+    </div>
+
+    <div class="threat-card yellow">
+      <div class="threat-header">
+        <div class="threat-num">03</div>
+        <div class="threat-meta">
+          <span class="threat-badge badge-yellow">Висока загроза</span>
+          <div class="threat-title">Фішинг та соціальна інженерія</div>
+        </div>
+      </div>
+      <div class="threat-body">
+        Фішингові атаки в Індонезії набули масового характеру завдяки широкому використанню мобільного банкінгу та e-commerce. Зловмисники підробляють сайти банків, урядових порталів та платіжних систем. Особливо поширений SMS-фішинг (smishing) та атаки через месенджери WhatsApp/Telegram. За даними Kaspersky, Індонезія входить до топ-5 країн Азіатсько-Тихоокеанського регіону за кількістю фішингових атак.
+      </div>
+      <div class="incident-box">
+        <strong>📌 Реальний інцидент</strong>
+        <p>2022 рік — масова смішинг-кампанія проти клієнтів Bank Rakyat Indonesia (BRI). Жертви отримували SMS із фальшивим посиланням для «верифікації рахунку». За оцінками, понад 40 000 клієнтів перейшли за посиланням; збитки склали мільйони рупій.</p>
+      </div>
+      <div class="standards-row">
+        <span class="std-tag">NIST CSF — PR.AT-1</span>
+        <span class="std-tag">ISO 27001 — A.6.3</span>
+        <span class="std-tag">BSSN Phishing Guidelines</span>
+      </div>
+    </div>
+
+    <div class="threat-card blue">
+      <div class="threat-header">
+        <div class="threat-num">04</div>
+        <div class="threat-meta">
+          <span class="threat-badge badge-blue">Системна загроза</span>
+          <div class="threat-title">DDoS-атаки на критичну інфраструктуру</div>
+        </div>
+      </div>
+      <div class="threat-body">
+        Distributed Denial of Service (DDoS) атаки регулярно вражають індонезійські фінансові установи, телекомунікаційні компанії та державні онлайн-сервіси. Зростання використання хмарних сервісів і збільшення кількості IoT-пристроїв (Індонезія — один зі світових лідерів за кількістю підключених пристроїв) розширюють поверхню атаки. Хактивісти — як внутрішні, так і міжнародні групи — використовують DDoS як інструмент тиску.
+      </div>
+      <div class="incident-box">
+        <strong>📌 Реальний інцидент</strong>
+        <p>Серпень 2023 — хактивістська група Anonymous Sudan атакувала ресурси Bank Indonesia та ряду телекомунікаційних провайдерів, запустивши масований DDoS. Деякі сервіси були недоступні протягом кількох годин. Атака відбулась на фоні регіональних геополітичних напруженостей.</p>
+      </div>
+      <div class="standards-row">
+        <span class="std-tag">NIST SP 800-61</span>
+        <span class="std-tag">ISO 27001 — A.8.20</span>
+        <span class="std-tag">ITU-T X.1037</span>
+      </div>
+    </div>
+
+    <div class="threat-card purple">
+      <div class="threat-header">
+        <div class="threat-num">05</div>
+        <div class="threat-meta">
+          <span class="threat-badge badge-purple">Зростаюча загроза</span>
+          <div class="threat-title">APT-атаки та кібершпигунство</div>
+        </div>
+      </div>
+      <div class="threat-body">
+        Групи Advanced Persistent Threats (APT), пов'язані з іноземними державними акторами, систематично атакують урядові, оборонні та стратегічні промислові об'єкти Індонезії. Метою є довгострокове шпигунство, збір розвідувальних даних та потенційний саботаж. Ці атаки часто починаються зі спеціально розробленого spear-phishing та використання вразливостей нульового дня (0-day).
+      </div>
+      <div class="incident-box">
+        <strong>📌 Реальний інцидент</strong>
+        <p>2021–2022 роки — серія атак, які дослідники Recorded Future пов'язали з групою Mustang Panda (Китай), на морські агентства та міністерства Індонезії. Зловмисники використовували троян PlugX для тривалого прихованого доступу до систем, збираючи документи щодо морської стратегії країни.</p>
+      </div>
+      <div class="standards-row">
+        <span class="std-tag">MITRE ATT&CK Framework</span>
+        <span class="std-tag">ISO 27001 — A.5.7</span>
+        <span class="std-tag">NIST SP 800-137</span>
+      </div>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="section-heading">🛡️ Частина II: <span>5 стратегічних рекомендацій</span></div>
+
+    <div class="recs-grid">
+      <div class="rec-card">
+        <div class="rec-icon" style="background:#fef2f2">🔐</div>
+        <div class="rec-num">Рекомендація 01</div>
+        <div class="rec-title">Впровадження Zero Trust Architecture</div>
+        <div class="rec-body">Перехід від периметральної безпеки до моделі Zero Trust: жодна мережа чи користувач не вважаються довіреними за замовчуванням. Необхідна мікросегментація мереж, багатофакторна автентифікація (MFA) для всіх держслужб та постійна верифікація ідентичності. Особливо актуально для гібридних держслужбовців після COVID-19.</div>
+        <div class="rec-std">📎 NIST SP 800-207 · ISO 27001 A.8.3 · CISA Zero Trust Maturity Model</div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-icon" style="background:#eff6ff">💾</div>
+        <div class="rec-num">Рекомендація 02</div>
+        <div class="rec-title">Обов'язкове резервне копіювання за правилом 3-2-1</div>
+        <div class="rec-body">Після атаки на PDN-2024 критично впровадити обов'язкове резервне копіювання за правилом 3-2-1: 3 копії даних, 2 різних носії, 1 офлайн-копія. Регулярне тестування відновлення. Автономні резервні копії унеможливлюють шифрування ransomware.</div>
+        <div class="rec-std">📎 ISO 27001 A.8.13 · NIST CSF RC.RP-1 · CIS Control 11</div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-icon" style="background:#f0fdf4">🎓</div>
+        <div class="rec-num">Рекомендація 03</div>
+        <div class="rec-title">Національна програма кіберосвіти</div>
+        <div class="rec-body">Запуск масштабної програми підвищення цифрової грамотності для громадян та держслужбовців. Обов'язкові щорічні тренінги з кібергігієни, симуляції фішингових атак, курси з безпечної роботи в мережі. Партнерство з університетами для підготовки фахівців з кібербезпеки відповідно до попиту ринку.</div>
+        <div class="rec-std">📎 NIST CSF PR.AT-1 · ISO 27001 A.6.3 · ITU Global Cybersecurity Agenda</div>
+      </div>
+
+      <div class="rec-card">
+        <div class="rec-icon" style="background:#faf5ff">🏛️</div>
+        <div class="rec-num">Рекомендація 04</div>
+        <div class="rec-title">Посилення регуляторної бази (UU PDP)</div>
+        <div class="rec-body">Ефективне впровадження Закону про захист персональних даних (UU PDP, 2022). Створення незалежного регулятора із реальними повноваженнями накладати штрафи. Обов'язкова сертифікація ISO/IEC 27001 для операторів критичної інфраструктури. Встановлення 72-годинного терміну повідомлення про інциденти.</div>
+        <div class="rec-std">📎 ISO/IEC 27701 · UU PDP 2022 · GDPR Equivalence · APEC CBPR</div>
+      </div>
+
+      <div class="rec-card" style="grid-column: 1/-1">
+        <div class="rec-icon" style="background:#fff7ed">🌐</div>
+        <div class="rec-num">Рекомендація 05</div>
+        <div class="rec-title">Розвиток міжнародної кіберспівпраці та CERT</div>
+        <div class="rec-body">Посилення BSSN (Badan Siber dan Sandi Negara) як національного координатора кібербезпеки. Поглиблення участі в ASEAN CERT і двосторонніх угодах про обмін розвідувальними даними про загрози. Інтеграція із MITRE ATT&CK, STIX/TAXII-платформами для реального часу обміну індикаторами компрометації (IoC). Участь у міжнародних кібернавчаннях Cyber Storm та ASEAN CSIRT.</div>
+        <div class="rec-std">📎 MITRE ATT&CK · NIST SP 800-61 · ASEAN Cybersecurity Cooperation Strategy 2021–2025 · ITU-T X.1500</div>
+      </div>
+    </div>
+
+    <div class="conclusion-box">
+      <h3>🔍 Висновок</h3>
+      <p>Індонезія як четверта за населенням країна у світі та активно цифровізована економіка перебуває на перехресті значних кіберризиків. Інцидент з PDN у 2024 році став каталізатором для реформ. Успішна кібербезпека вимагає поєднання технічних заходів (Zero Trust, резервування), правових реформ (UU PDP), людського фактору (освіта) та міжнародної співпраці. Дотримання стандартів ISO/IEC 27001, NIST CSF та регіональних рамок ASEAN формує надійну основу для кіберстійкості держави.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showPage(n) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page' + n).classList.add('active');
+    document.getElementById('nav' + n).classList.add('active');
+    document.getElementById('mnav' + n).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  }
+  function toggleMenu() {
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('mobileMenu');
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('burger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+</body>
+</html>
